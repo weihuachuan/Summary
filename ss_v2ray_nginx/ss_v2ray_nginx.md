@@ -9,7 +9,7 @@
 ### 服务器配置
 #### 申请证书
 通过acme.sh申请证书自动跟新
-```
+```shell
 curl  https://get.acme.sh | sh
 
 acme.sh  --issue -d www.totosay.cf  --standalone \
@@ -19,7 +19,7 @@ acme.sh  --issue -d www.totosay.cf  --standalone \
 这里/opt/module/nginx/conf/ssl 目录提前创建好 并且本地80端口开放
 
 #### 利用dockers配置 ss+v2ray
-```
+```shell
 docker pull acrisliu/shadowsocks-libev
 
 docker run -d \
@@ -39,7 +39,7 @@ docker logs ss-libev
 ```
 看日志启动没报错启动成功
 #### nginix配置文档
-```
+```shell
 server {
         listen  443 ssl;
         ssl on;
