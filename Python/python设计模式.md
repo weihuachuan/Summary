@@ -1,6 +1,6 @@
-#  Python  几种常见设计模式
+##  Python  几种常见设计模式
 
-##  适配器模式 
+###  适配器模式 
 
 > 解决新旧功能接口不兼容问题
 
@@ -60,7 +60,7 @@ if __name__ == '__main__':
         print('type is {}'.format(type(i)))
 ```
 
-## 建造者模式 
+### 建造者模式 
 
 > 相同的流程、不同的表示、修建者。也就是同一个对象（建筑）在同一修建者组织下，
 > 以相同的实例化流程（施工流程）来达到不同的表示效果（毛坯、写字楼）
@@ -121,7 +121,7 @@ if __name__ == '__main__':
     test.build()
 ```
 
-## 策略模式
+### 策略模式
 > 如果在一个系统里面有许多类，它们之间的区别仅在于它们的行为，那么使用策略模式可以动态> > 地让一个对象在许多行为中选择一种行为。
 > 一个系统需要动态地在几种算法中选择一种。 
 > 如果一个对象有很多的行为，如果不用恰当的模式，这些行为就只好使用多重的条件选择语句来> > 实现。
@@ -152,7 +152,7 @@ if __name__ == '__main__':
     [func.speak() for func in [test1, test2, test3]]
 ```
 
-## 抽象工厂模式
+### 抽象工厂模式
 
 > 抽象工厂有两个方法生产车架和制造轮胎，但是他没有指定是生产那种牌子的，
 > 上图有两种牌子：飞鸽自行车、永久自行车，也就可以增加一个凤凰自行车等等。
@@ -198,7 +198,7 @@ if __name__ == '__main__':
     test1.run()
 ```
 
-## 观察者模式
+### 观察者模式
 
 > 观察者核心：销售人员，被观察者number数据
 
@@ -262,7 +262,7 @@ if __name__ == '__main__':
     observer.number = 25
 ```
 
-## 原型模式
+### 原型模式
 
 > 要实现多个人的自我介绍，一般方法是每个人都创建一个对象，
 > 但是使用原型模式之后，只需要实例化一个对象（标准人）,
@@ -305,7 +305,7 @@ if __name__ == '__main__':
     b.run()
 ```
 
-## 代理模式
+### 代理模式
 
 > 通过代理访问某个对象
 
@@ -359,5 +359,74 @@ if __name__ == '__main__':
     test.leve()
     test.user = 'e'
     test.leve()
+```
+
+## Python 获取某个类所有子类列表
+
+### 代码实现
+
+```python
+class BodyItem:
+    @staticmethod
+    def isMacth(x):
+        if x == "aa":
+            return True
+        return False
+
+    @staticmethod
+    def execute():
+        print("BodyItem 执行语句")
+
+
+class BodyItem1(BodyItem):
+    @staticmethod
+    def isMacth(x):
+        if x == "aa":
+            return True
+        return False
+
+    @staticmethod
+    def execute():
+        print("BodyItem1 执行语句")
+
+
+class BodyItem2(BodyItem):
+    @staticmethod
+    def isMacth(x):
+        if x == "bb":
+            return True
+        return False
+
+    @staticmethod
+    def execute():
+        print("BodyItem2 执行语句")
+
+
+class BodyItem3(BodyItem):
+    @staticmethod
+    def isMacth(x):
+        if x == "cc":
+            return True
+        return False
+
+    @staticmethod
+    def execute():
+        print("BodyItem3 执行语句")
+
+
+def get_subclasses(cls):
+    """
+    获取python类的所有子类
+    :param cls: 父类
+    :return: list
+    """
+    return [subcls for subcls in cls.__subclasses__()]
+
+
+if __name__ == '__main__':
+    subList = get_subclasses(BodyItem)
+    for subObject in subList:
+        if subObject.isMacth("cc"):
+            subObject.execute()
 ```
 
