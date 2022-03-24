@@ -63,12 +63,20 @@ server {
                 proxy_set_header Connection "upgrade";
                 proxy_set_header Host      $http_host;
                 }
+        location / {
+                proxy_redirect off;
+                proxy_pass http://173.82.226.172:8082/;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade   $http_upgrade;
+                proxy_set_header Connection "upgrade";
+                proxy_set_header Host      $http_host;
+                }
+        }        
     }
 ```
-配置完重启nginx  /opt/module/nginx/sbin/nginx -s reload
+配置完重启nginx  /opt/module/nginx/sbin/nginx -s reload  ---proxy_pass http://173.82.226.172:8082/; 这个是我自己的网盘服务
 
 通过windows客户端 ISO客户端 Android客户端登录 [网址](https://funnyjs.com/shadowsocks-v2ray-ws-proxy/) :文章末尾有详细介绍
-
 
 
 
