@@ -1,6 +1,5 @@
-# ss+v2ray+nginx的安全系数较高的科学上网工具
-## 首先申请域名
-### 网址 https://www.freenom.com/
+# ss+v2ray+nginx
+## 首先申请域名 网址 https://www.freenom.com/
 1. 搜索域名的时候要带上后缀不然免费的域名不可用 例子:totosa.cf
 2. 加入购物车 点击完成 
 3. Verify My Email Address 这一步就需要虚拟一个美国人的身份方便注册 [虚拟身份网址](https://www.fakenamegenerator.com/)
