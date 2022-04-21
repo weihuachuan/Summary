@@ -24,7 +24,6 @@ docker pull acrisliu/shadowsocks-libev
 docker run -d \
 -e "ARGS=--plugin v2ray-plugin --plugin-opts server;tls;host=yourdomain.com;path=/v2ray -u" \
 -e PASSWORD=YourPassword \
--v /root/.acme.sh:/root/.acme.sh \
 --user root \
 --name=ss-libev \
 -p 8388:8388/tcp \
