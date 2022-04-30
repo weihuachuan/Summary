@@ -30,7 +30,7 @@
 
 ​		
 
-![image-20220430092052397](..\images\image-20220430092052397.png)
+![image-20220430154345770](../images/image-20220430154345770.png)
 
 # VI/VIM编辑器
 
@@ -145,10 +145,10 @@ vim /etc/sysconfig/network-scripts/ifcfg-ens33
    chkconfig 服务名 on  （功能描述：开启指定服务的自动启动）
    chkconfig 服务名 --list	（功能描述：查看服务开机启动状态）
 2. 基本语法（centos7）
-  systemctl  list-unit-files  （功能描述：查看所有服务器自启配置）
-  systemctl  disable 服务名  （功能描述：关掉指定服务的自动启动）
-  systemctl  enable  服务名  （功能描述：开启指定服务的自动启动）
-  systemctl  is-enabled 服务名（功能描述：查看服务开机启动状态）
+    systemctl  list-unit-files  （功能描述：查看所有服务器自启配置）
+    systemctl  disable 服务名  （功能描述：关掉指定服务的自动启动）
+    systemctl  enable  服务名  （功能描述：开启指定服务的自动启动）
+    systemctl  is-enabled 服务名（功能描述：查看服务开机启动状态）
 
 ### 5.5.3 克隆虚拟机
 
@@ -777,7 +777,7 @@ Linux系统是一种典型的多用户系统，不同的用户处于不同的地
 
 1）从左到右的10个字符表示\****
 
-![img](file:///C:\Users\huachuan\AppData\Local\Temp\ksohtml13592\wps1.jpg) 
+![image-20220430153954042](../images/image-20220430153954042.png) 
 
 图 文件属性
 
