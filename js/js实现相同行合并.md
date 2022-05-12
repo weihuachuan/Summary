@@ -50,7 +50,13 @@
 	//数据排序
     dt.sort(function (a, b) {
         if (a.siteName === b.siteName) {
-            return a.type > b.type ? 1 : a.type < b.type ? -1 : 0;
+            if(a.type === b.type){
+                return a.trainCode > b.trainCode ? 1 : a.trainCode < b.trainCode ? -1 : 0;
+            }else if(a.type > b.type){
+                return 1;
+            }else {
+                return -1;
+            }
         } else if (a.siteName > b.siteName) {
             return 1;
         } else {
