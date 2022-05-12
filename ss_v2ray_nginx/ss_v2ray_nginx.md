@@ -39,7 +39,7 @@ docker logs ss-libev
 
 #### 个人网盘安装
 
-​	[kiftd-master.zip](www.baidu.com)地址
+​	[kiftd-master.zip](https://www.totosay.cf/externalLinksController/downloadFileByKey/kiftd-master.zip?dkey=94be1fbc-f69b-47d9-b00c-b505bf3028c2)地址
 
 1. 将kiftd-master.zip上传服务器目录 /opt/module/software/ 下
 2. cd /opt/module/software/
