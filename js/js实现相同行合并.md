@@ -1,4 +1,4 @@
-# js实现Table行合并
+# 方式一
 
 ## 实现效果
 
@@ -114,4 +114,324 @@
     }
 </script>
 ```
+
+# 方式二
+
+## 实现效果
+
+![image-20220513091923241](../images/image-20220513091923241.png)
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>test table</title>
+    <style>
+        table,th,thead,tr,td{
+            border: 1px solid black ;
+        }
+    </style>
+</head>
+<body>
+</body>
+</html>
+<script type="text/javascript">
+    const data = [
+        ['Name', 'Year', 'data', 'data', 'value'],
+        ['构建期', 2012, 1212, 1300, 29],
+        ['构建期', 2013, 154, 154, 29],
+        ['运营期', 2014, 154, 154, 484]
+    ];
+
+
+    function createTable() {
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        const tbody = document.createElement('tbody');
+        for (let i = 0; i < data.length; i++) {
+            const tr = document.createElement('tr');
+            i === 0 ? thead.appendChild(tr) : tbody.appendChild(tr);
+            for (let j = 0; j < data[0].length; j++) {
+                if (i === 0) {
+                    const th = document.createElement('th');
+                    th.innerText = data[i][j];
+                    tr.appendChild(th);
+                } else {
+                    const td = document.createElement('td');
+                    td.innerText = data[i][j];
+                    tr.appendChild(td);
+                }
+            }
+        }
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        document.body.appendChild(table);
+    }
+
+    // const formatTable = [
+    //     [
+    //         {
+    //             "value": "阶段",
+    //             "rowCount": 1,
+    //             "colCount": 1
+    //         },
+    //         {
+    //             "value": "年份",
+    //             "rowCount": 1,
+    //             "colCount": 1
+    //         },
+    //         {
+    //             "value": "投入费用",
+    //             "rowCount": 2,
+    //             "colCount": 1
+    //         },
+    //         {
+    //             "value": "投入费用",
+    //             "rowCount": 0,
+    //             "colCount": 1
+    //         },
+    //         {
+    //             "value": "合计",
+    //             "rowCount": 1,
+    //             "colCount": 1
+    //         }
+    //     ],
+    //     [
+    //         {
+    //             "value": "构建期",
+    //             "rowCount": 1,
+    //             "colCount": 2
+    //         },
+    //         {
+    //             "value": 2012,
+    //             "rowCount": 1,
+    //             "colCount": 1
+    //         },
+    //         {
+    //             "value": 1212,
+    //             "rowCount": 1,
+    //             "colCount": 1
+    //         },
+    //         {
+    //             "value": 1300,
+    //             "rowCount": 1,
+    //             "colCount": 1
+    //         },
+    //         {
+    //             "value": 29,
+    //             "rowCount": 1,
+    //             "colCount": 2
+    //         }
+    //     ],
+    //     [
+    //         {
+    //             "value": "构建期",
+    //             "rowCount": 1,
+    //             "colCount": 0
+    //         },
+    //         {
+    //             "value": 2013,
+    //             "rowCount": 1,
+    //             "colCount": 1
+    //         },
+    //         {
+    //             "value": 154,
+    //             "rowCount": 2,
+    //             "colCount": 1
+    //         },
+    //         {
+    //             "value": 154,
+    //             "rowCount": 0,
+    //             "colCount": 1
+    //         },
+    //         {
+    //             "value": 29,
+    //             "rowCount": 1,
+    //             "colCount": 0
+    //         }
+    //     ],
+    //     [
+    //         {
+    //             "value": "运营期",
+    //             "rowCount": 1,
+    //             "colCount": 1
+    //         },
+    //         {
+    //             "value": 2014,
+    //             "rowCount": 1,
+    //             "colCount": 1
+    //         },
+    //         {
+    //             "value": 154,
+    //             "rowCount": 2,
+    //             "colCount": 1
+    //         },
+    //         {
+    //             "value": 154,
+    //             "rowCount": 0,
+    //             "colCount": 1
+    //         },
+    //         {
+    //             "value": 484,
+    //             "rowCount": 1,
+    //             "colCount": 1
+    //         }
+    //     ]
+    // ];
+
+    function formatDataCol(targetCols) {
+        const formatTable = new Array(data.length).fill(0).map(() => new Array(data[0].length).fill(0));
+        for (let j = 0; j < data[0].length; j++) {
+            if (targetCols.indexOf(j) === -1) {
+                for (let i = 0; i < data.length; i++) {
+                    formatTable[i][j] = {
+                        value: data[i][j],
+                        colCount: 1
+                    };
+                }
+            } else {
+                let index = 0;
+                let tmp = data[index][j];
+                let colCount = 1;
+                for (let i = 1; i < data.length; i++) {
+                    if (data[i][j] === tmp) {
+                        colCount++;
+                        formatTable[i][j] = {
+                            value: data[i][j],
+                            colCount: 0
+                        };
+                    } else {
+                        formatTable[index][j] = {
+                            value: data[index][j],
+                            colCount: colCount,
+                        };
+                        index = i;
+                        tmp = data[index][j];
+                        colCount = 1;
+                    }
+                }
+                if (index < data.length) {
+                    formatTable[index][j] = {
+                        value: data[index][j],
+                        colCount: colCount,
+                    };
+                }
+            }
+        }
+        return formatTable;
+    }
+
+    function formatDataRow(targetRows) {
+        const formatTable = new Array(data.length).fill(0).map(() => new Array(data[0].length).fill(0));
+        for (let i = 0; i < data.length; i++) {
+            if (targetRows.indexOf(i) === -1) {
+                for (let j = 0; j < data[0].length; j++) {
+                    formatTable[i][j] = {
+                        value: data[i][j],
+                        rowCount: 1
+                    };
+                }
+            } else {
+                let index = 0;
+                let tmp = data[i][index];
+                let rowCount = 1;
+                for (let j = 1; j < data[0].length; j++) {
+                    if (data[i][j] === tmp) {
+                        rowCount++;
+                        formatTable[i][j] = {
+                            value: data[i][j],
+                            rowCount: 0
+                        };
+                    } else {
+                        formatTable[i][index] = {
+                            value: data[i][index],
+                            rowCount: rowCount,
+                        };
+                        index = j;
+                        tmp = data[i][index];
+                        rowCount = 1;
+                    }
+                }
+                if (index < data[0].length) {
+                    formatTable[i][index] = {
+                        value: data[i][index],
+                        rowCount: rowCount,
+                    };
+                }
+            }
+        }
+        return formatTable;
+    }
+
+    function mergeFormat(formatCols, formatRows) {
+        const formatTable = new Array(data.length).fill(0).map(() => new Array(data[0].length).fill(0));
+        for (let i = 0; i < data.length; i++) {
+            for (let j = 0; j < data[0].length; j++) {
+                formatTable[i][j] = {
+                    value: data[i][j],
+                    rowCount: formatRows[i][j].rowCount,
+                    colCount: formatCols[i][j].colCount
+                };
+            }
+        }
+        return formatTable;
+    }
+
+    function createTableByData(targetCols, targetRows) {
+        const formatCols = formatDataCol(targetCols);
+        const formatRows = formatDataRow(targetRows);
+        const data = mergeFormat(formatCols, formatRows);
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        const tbody = document.createElement('tbody');
+        for (let i = 0; i < data.length; i++) {
+            const tr = document.createElement('tr');
+            i === 0 ? thead.appendChild(tr) : tbody.appendChild(tr);
+            for (let j = 0; j < data[0].length; j++) {
+                if (i === 0) {
+                    const th = document.createElement('th');
+                    if (data[i][j].rowCount === 0) {
+
+                    } else if (data[i][j].rowCount === 1) {
+                        th.innerText = data[i][j].value;
+                        tr.appendChild(th);
+                    } else {
+                        th.innerText = data[i][j].value;
+                        th.colSpan = data[i][j].rowCount;
+                        tr.appendChild(th);
+                    }
+                } else {
+                    const td = document.createElement('td');
+                    if (data[i][j].colCount === 0 || data[i][j].rowCount === 0) {
+
+                    } else if (data[i][j].colCount === 1 && data[i][j].rowCount === 1) {
+                        td.innerText = data[i][j].value;
+                        tr.appendChild(td);
+                    } else if (data[i][j].colCount !== 1 && data[i][j].rowCount !== 1) {
+                        td.innerText = data[i][j].value;
+                        td.rowSpan = data[i][j].colCount;
+                        td.colSpan = data[i][j].rowCount;
+                        tr.appendChild(td);
+                    } else if (data[i][j].colCount !== 1 && data[i][j].rowCount === 1) {
+                        td.innerText = data[i][j].value;
+                        td.rowSpan = data[i][j].colCount;
+                        tr.appendChild(td);
+                    } else if (data[i][j].colCount === 1 && data[i][j].rowCount !== 1) {
+                        td.innerText = data[i][j].value;
+                        td.colSpan = data[i][j].rowCount;
+                        tr.appendChild(td);
+                    }
+                }
+            }
+        }
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        document.body.appendChild(table);
+    }
+
+    createTableByData([0, 4], [0, 1, 2, 3]);
+</script>
+```
+
+
 
