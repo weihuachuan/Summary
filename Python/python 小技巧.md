@@ -108,3 +108,15 @@ if __name__ == '__main__':
 
 ```
 
+# 设置pip代理
+
+```shell
+cd C:/user/
+mkdir pip
+cd pip
+vim pip.ini
+# 添加如下内容即可pip
+[global]
+proxy=http://23337:RFsw123.@10.191.131.15:3128
+```
+
