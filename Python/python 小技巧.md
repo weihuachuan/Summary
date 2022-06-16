@@ -120,3 +120,16 @@ vim pip.ini
 proxy=http://23337:RFsw123.@10.191.131.15:3128
 ```
 
+# 设置git代理
+
+```shell
+cd C:/user/
+vim .gitConfig
+# 添加如下内容即可
+[user]
+	name = weihuachuan
+	email = 592067084@qq.com
+[http]
+	proxy = http://23337:RFsw123.@10.191.131.45:3128
+```
+
