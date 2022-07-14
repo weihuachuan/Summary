@@ -39,7 +39,7 @@ docker logs ss-libev
 
 #### 个人网盘安装
 
-​	[kiftd-master.zip](https://www.totosay.cf/externalLinksController/downloadFileByKey/kiftd-master.zip?dkey=94be1fbc-f69b-47d9-b00c-b505bf3028c2)地址
+​	[kiftd-master.zip](https://www.totosay.cf/externalLinksController/downloadFileByKey/kiftd-master.zip?dkey=5af247f8-e8f2-4d0c-9c12-c3bcf2745e0d)地址
 
 1. 将kiftd-master.zip上传服务器目录 /opt/module/software/ 下
 2. cd /opt/module/software/
@@ -228,6 +228,29 @@ http {
 配置完重启nginx  /opt/module/nginx/sbin/nginx -s reload  ---proxy_pass http://173.82.226.172:8082/; 这个是我自己的网盘服务
 
 通过windows客户端 ISO客户端 Android客户端登录 [网址](https://funnyjs.com/shadowsocks-v2ray-ws-proxy/) :文章末尾有详细介绍
+
+##### Nginx解决跨域问题
+
+```shell
+ server {
+        listen       83; #监听83端口，可以改成其他端口
+        server_name  localhost; # 当前服务的域名(nginx所在服务器域名)
+ 
+        #charset koi8-r;
+ 
+        #access_log  logs/host.access.log  main;
+ 
+        location / {
+            proxy_pass http://localhost:8080;#代理项目部署的地址(这里项目部署在了当前服务器tomcat上,端口8080)
+            proxy_redirect default;
+        }
+ 
+		location /api { #添加访问目录为/api的代理配置,使以“/api”开头的地址都转到“http://192.168.1.111:8080”上
+			rewrite  ^/api/(.*)$ /$1 break;
+			proxy_pass   http://192.168.1.111:8080;
+        }
+}
+```
 
 
 
