@@ -1,6 +1,6 @@
 # python实现分布式锁
 ## zookeeper 实现
-```
+```shell
 """
 不使用:
 from kazoo.recipe.lock import Lock
@@ -128,7 +128,7 @@ if __name__ == '__main__':
         j.join()
 ```
 ## zookeeper实现2
-```
+```shell
 import threading
 import time
 import kazoo.client
@@ -243,7 +243,7 @@ if __name__ == '__main__':
 ```
 
 ## redis实现分布式锁
-```
+```shell
 # -*- coding: UTF-8 -*-
 """
 # rs勿忘初心
