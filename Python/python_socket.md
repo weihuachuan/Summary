@@ -105,8 +105,5 @@ class SocketUtil(object):
         self.conn.send(data)
 
     def close(self):
-        self.conn.close()
-
-
-        
+        self.conn.close()        
 ```
