@@ -22,8 +22,9 @@ acme.sh  --issue -d www.totosay.cf  --standalone \
 docker pull acrisliu/shadowsocks-libev
 
 docker run -d \
--e "ARGS=--plugin v2ray-plugin --plugin-opts server;tls;host=yourdomain.com;path=/v2ray -u" \
--e PASSWORD=YourPassword \
+-e "ARGS=--plugin v2ray-plugin --plugin-opts server;tls;host=www.totosay.top;path=/v2ray;cert=/root/.acme.sh/www.totosay.top/fullchain.cer;key=/root/.acme.sh/www.totosay.top/www.totosay.top.key -u" \
+-e PASSWORD=whc159357. \
+-v /root/.acme.sh:/root/.acme.sh \
 --user root \
 --name=ss-libev \
 -p 8388:8388/tcp \
