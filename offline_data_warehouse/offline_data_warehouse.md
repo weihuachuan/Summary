@@ -2,15 +2,15 @@
 
 ## 执行流程
 
-![image-20221106224424476](D:\Summary\offline_data_warehouse\images\image-20221106224424476.png)
+![image-20221106224424476](./images/image-20221106224424476.png)
 
 ## 定时调度时候 dt
 
-![image-20221106230120628](D:\Summary\offline_data_warehouse\images\image-20221106230120628.png)
+![image-20221106230120628](./images/image-20221106230120628.png)
 
 ## 造业务数据
 
-![image-20221106230645925](D:\Summary\offline_data_warehouse\images\image-20221106230645925.png)
+![image-20221106230645925](./images/image-20221106230645925.png)
 
 1. 修改application.properties 中的日期
 
@@ -24,4 +24,4 @@
 
 ## azkaban 执行任务
 
-![image-20221106231410968](D:\Summary\offline_data_warehouse\images\image-20221106231410968.png)
+![image-20221106231410968](./offline_data_warehouse/images/image-20221106231410968.png)
