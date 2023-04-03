@@ -2,15 +2,15 @@
 
 ## 执行流程
 
-![image-20221106224424476](./images/image-20221106224424476.png)
+![image-20221106224424476](images/image-20221106224424476.png)
 
 ## 定时调度时候 dt
 
-![image-20221106230120628](./images/image-20221106230120628.png)
+![image-20221106230120628](images/image-20221106230120628.png)
 
 ## 造业务数据
 
-![image-20221106230645925](./images/image-20221106230645925.png)
+![image-20221106230645925](images/image-20221106230645925.png)
 
 1. 修改application.properties 中的日期
 
