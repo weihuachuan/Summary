@@ -24,4 +24,4 @@
 
 ## azkaban 执行任务
 
-![image-20221106231410968](./offline_data_warehouse/images/image-20221106231410968.png)
+![image-20221106231410968](images/image-20221106231410968.png)
